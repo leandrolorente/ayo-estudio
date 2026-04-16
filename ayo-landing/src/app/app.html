@@ -1,0 +1,258 @@
+﻿<!-- ===================== HEADER ===================== -->
+<header id="header" [class.hidden]="headerHidden" [class.scrolled]="scrolled">
+  <div class="header-inner">
+    <div class="logo" (click)="scrollTo('inicio')">
+      <img src="logo-ayo-full.png" class="logo-img" alt="AYÃ“ Pilates">
+    </div>
+    <nav class="nav-desktop">
+      <a href="#" (click)="$event.preventDefault(); scrollTo('modalidades')">Modalidades</a>
+      <a href="#" (click)="$event.preventDefault(); scrollTo('sobre')">Sobre</a>
+      <a href="#" (click)="$event.preventDefault(); scrollTo('planos')">Planos</a>
+      <a href="#" (click)="$event.preventDefault(); scrollTo('contato')">Contato</a>
+    </nav>
+    <a class="btn-loc" href="https://maps.app.goo.gl/rtb8iqHp9xVqAHZaA" target="_blank">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+      Localização
+    </a>
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" [class.open]="menuOpen">
+    <a href="#" (click)="$event.preventDefault(); scrollTo('modalidades'); toggleMenu()">Modalidades</a>
+    <a href="#" (click)="$event.preventDefault(); scrollTo('sobre'); toggleMenu()">Sobre</a>
+    <a href="#" (click)="$event.preventDefault(); scrollTo('planos'); toggleMenu()">Planos</a>
+    <a href="#" (click)="$event.preventDefault(); scrollTo('contato'); toggleMenu()">Contato</a>
+  </div>
+</header>
+
+<!-- ===================== PROMO CAROUSEL ===================== -->
+<section class="hero-promos" id="inicio">
+  <div class="swiper hero-swiper" #heroSwiperEl>
+    <div class="swiper-wrapper">
+      @for (promo of promos; track promo.titulo) {
+        <div class="swiper-slide promo-slide">
+          <div class="promo-img-wrap">
+            <div class="promo-bg" [style.background-image]="'url(' + promo.img + ')'"></div>
+            <div class="promo-overlay"></div>
+            <h2 class="promo-titulo" [innerHTML]="promo.titulo"></h2>
+          </div>
+          <div class="promo-info">
+            <p>{{ promo.desc }}</p>
+            <a href="https://wa.me/5518981426731" target="_blank" class="btn-promo">
+              Quero agendar minha aula
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="swiper-pagination hero-pagination"></div>
+  </div>
+</section>
+
+<!-- ===================== MODALIDADES ===================== -->
+<section class="modalidades" id="modalidades">
+  @for (mod of modalidades; track mod.nome; let i = $index) {
+    <div class="mod-card anim-zoom-in" [style.transition-delay]="(i * 0.07) + 's'" [class.alt]="i % 2 !== 0" (click)="abrirDetalhe(i)" role="button" tabindex="0"
+         (keydown.enter)="abrirDetalhe(i)" (keydown.space)="$event.preventDefault(); abrirDetalhe(i)">
+      <div class="mod-bg" [style.background-image]="'url(' + mod.img + ')'"></div>
+      <div class="mod-titulo">
+        <h2>{{ mod.nome }}</h2>
+        <span class="mod-cta">Ver detalhes →</span>
+      </div>
+    </div>
+  }
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="sobre" id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-img-wrap" #sobreImgEl>
+      <img src="https://nyma.com.br/wp-content/uploads/2025/09/Pilates.webp" alt="AYO Pilates" loading="lazy">
+    </div>
+    <div class="sobre-texto" #sobreTextEl>
+      <span class="section-eyebrow anim-fade-up">Sobre nós</span>
+      <h2 class="sobre-heading anim-fade-up" style="transition-delay:0.06s">Movimento que transforma seu corpo e sua energia.</h2>
+      <div class="sobre-deco anim-fade-up" style="transition-delay:0.14s"></div>
+      <p class="anim-fade-up" style="transition-delay:0.22s">No AYO Movimento, acreditamos que cuidar do corpo e cuidar da mente caminham juntos para melhorar sua qualidade de vida.</p>
+      <p class="anim-fade-up" style="transition-delay:0.3s">Criamos um espaco acolhedor com turmas reduzidas e acompanhamento profissional para voce evoluir no seu proprio ritmo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIFERENCIAIS ===================== -->
+<section class="diferenciais" id="agende">
+  <div class="diferenciais-inner">
+    <span class="section-eyebrow anim-fade-up">Por que escolher o AYO Movimento?</span>
+    <h2 class="diferenciais-title anim-fade-up" style="transition-delay:0.08s">Resultados reais em saude e qualidade de vida</h2>
+
+    <ul class="diferenciais-list">
+      <li class="anim-fade-up" style="transition-delay:0.14s">Turmas reduzidas</li>
+      <li class="anim-fade-up" style="transition-delay:0.2s">Acompanhamento profissional</li>
+      <li class="anim-fade-up" style="transition-delay:0.26s">Ambiente acolhedor</li>
+      <li class="anim-fade-up" style="transition-delay:0.32s">Metodo que respeita o seu corpo</li>
+      <li class="anim-fade-up" style="transition-delay:0.38s">Evolucao no seu proprio ritmo</li>
+    </ul>
+
+    <p class="diferenciais-cta-text anim-fade-up" style="transition-delay:0.44s">
+      Venha conhecer o AYO Movimento e descubra como o movimento pode transformar seu corpo e sua rotina.
+    </p>
+
+    <a href="https://wa.me/5518981426731" target="_blank" class="btn-agendar anim-fade-up" style="transition-delay:0.5s">
+      QUERO AGENDAR MINHA AULA
+    </a>
+  </div>
+</section>
+
+<!-- ===================== PLANOS ===================== -->
+<section class="planos-section" id="planos">
+
+  <!-- cabeçalho creme -->
+  <div class="planos-top">
+    <span class="section-eyebrow anim-fade-up">Planos AYÓ</span>
+    <h2 class="planos-titulo anim-fade-up" style="transition-delay:0.08s">Conheça nossos planos</h2>
+    <p class="planos-subtitulo anim-fade-up" style="transition-delay:0.16s">Escolha a frequência ideal para a sua rotina de bem-estar</p>
+  </div>
+
+  <!-- onda creme â†’ escuro -->
+  <div class="planos-wave" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 90" preserveAspectRatio="none">
+      <path fill="#FDF6F0" d="M0,0 H1440 V32 C1100,90 860,88 720,64 C580,40 320,6 0,58 Z"/>
+    </svg>
+  </div>
+
+  <!-- carrossel de planos — layout Nyma: imagem | info -->
+  <div class="planos-swiper-outer">
+    <div class="swiper planos-swiper" #planosSwiperEl>
+      <div class="swiper-wrapper">
+        @for (p of planos; track p.nome) {
+          <div class="swiper-slide">
+            <div class="plano-slide">
+              <div class="plano-slide-img">
+                <img [src]="p.img" [alt]="p.nome" loading="lazy">
+              </div>
+              <div class="plano-slide-info">
+                <span class="plano-slide-nome">{{ p.nome }}</span>
+                <hr class="plano-divider">
+                <strong class="plano-valor">{{ p.valor }}</strong>
+                <span class="plano-por">POR AULA</span>
+                @if (p.parcelas) {
+                  <span class="plano-parcelas">{{ p.parcelas }}</span>
+                }
+                <span class="plano-dots">· · ·</span>
+                <span class="plano-acesso">{{ p.acesso }}</span>
+                <a [href]="getPlanoWaLink(p.nome)" target="_blank" class="btn-conhecer">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 0C5.376 0 0 5.374 0 11.988c0 2.115.557 4.099 1.528 5.82L0 24l6.335-1.658A11.946 11.946 0 0011.99 24C18.603 24 24 18.626 24 12.012 24 5.374 18.603 0 11.99 0zm0 21.818a9.826 9.826 0 01-5.012-1.371l-.359-.214-3.76.984 1.003-3.648-.235-.374A9.816 9.816 0 012.18 11.98c0-5.418 4.41-9.827 9.81-9.827 5.4 0 9.81 4.409 9.81 9.827s-4.41 9.838-9.81 9.838z"/></svg>
+                  FALE COM A GENTE
+                </a>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="swiper-button-prev plano-prev"></div>
+      <div class="swiper-button-next plano-next"></div>
+      <div class="swiper-pagination planos-pagination"></div>
+    </div>
+  </div>
+
+  <!-- AYO PASS — featured banner -->
+  <div class="planos-pass-outer">
+    <div class="ayo-pass-featured">
+      <div class="ayo-pass-content">
+        <span class="pass-label">AYO PASS</span>
+        <h3 class="pass-headline">Frequência<br>Livre</h3>
+        <div class="pass-price-display">
+          <strong>R$650,00</strong>
+          <span>/mês</span>
+        </div>
+        <span class="pass-freq-badge">FREQUÊNCIA LIVRE</span>
+        <p class="pass-desc">Acesso ilimitado a todas as modalidades. Validade 30 dias. Sem fidelidade.</p>
+        <a [href]="getPlanoWaLink('AYO PASS – Frequência Livre')" target="_blank" class="btn-pass">
+          QUERO O PASSE
+          <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </a>
+      </div>
+      <div class="ayo-pass-img-wrap">
+        <img src="https://nyma.com.br/wp-content/uploads/2025/09/10.webp" alt="AYO Pass" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================== APP ===================== -->
+<section class="app-section">
+  <div class="app-inner">
+    <div class="app-img-col anim-fade-right">
+      <img src="https://nyma.com.br/wp-content/uploads/2025/09/app-e1757791658502-952x1024.webp" alt="App AYO" loading="lazy">
+    </div>
+    <div class="app-content-col anim-fade-left">
+      <span class="section-eyebrow">Pelo celular</span>
+      <h2>Nosso app é super fácil e intuitivo</h2>
+      <ul class="app-steps">
+        <li class="anim-fade-up" style="transition-delay:0.08s">
+          <span class="step-check">âœ“</span>
+          Faça o login com seu e-mail ou cadastro que você já fez no AYO PILATES
+        </li>
+        <li class="anim-fade-up" style="transition-delay:0.16s">
+          <span class="step-check">âœ“</span>
+          Para comprar as experiências, vá até a aba Contratos
+        </li>
+        <li class="anim-fade-up" style="transition-delay:0.24s">
+          <span class="step-check">âœ“</span>
+          Para reservar os horários, vá até a aba Agenda
+        </li>
+        <li class="anim-fade-up" style="transition-delay:0.32s">
+          <span class="step-check">âœ“</span>
+          Escolha a modalidade e o horário que você quer, e pronto!
+        </li>
+      </ul>
+      <div class="app-btns anim-fade-up" style="transition-delay:0.4s">
+        <a href="https://nextfit.com.br/appaluno" target="_blank" class="btn-app">Baixar app</a>
+        <img src="https://nyma.com.br/wp-content/uploads/2025/09/app-bais.webp" alt="Disponível nas lojas" class="app-badges" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="contato">
+  <div class="footer-grid">
+    <div class="footer-col anim-fade-up">
+      <div class="footer-logo">
+        <img src="logo-ayo-full.png" class="logo-img" alt="AYÃ“ Pilates">
+      </div>
+      <p class="footer-viva">VIVÁ Café &amp; Bem Estar</p>
+      <a href="https://instagram.com/ayopilatess" target="_blank" class="footer-social">
+        <svg viewBox="0 0 448 512" width="20" height="20" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        <span>&#64;ayopilatess</span>
+      </a>
+    </div>
+    <div class="footer-col anim-fade-up" style="transition-delay:0.12s">
+      <h3>Horário de atendimento</h3>
+      <p>Segunda — Sexta: 07h00 — 21h00</p>
+      <p>Sábados: 08h00 — 12h00</p>
+      <p>Domingos: 08h00 — 12h00</p>
+    </div>
+    <div class="footer-col anim-fade-up" style="transition-delay:0.24s">
+      <h3>Contatos</h3>
+      <a href="https://wa.me/5518981426731" target="_blank" class="footer-link">
+        <svg viewBox="0 0 448 512" width="16" height="16" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 AYO Pilates — VIVÁ Café &amp; Bem Estar. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===================== FLOAT WHATSAPP ===================== -->
+<a class="wpp-float" href="https://wa.me/5518981426731" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 448 512" fill="currentColor" width="26" height="26"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+
+<!-- Rota modalidades (renderiza ModalidadesPage como overlay full-screen) -->
+<router-outlet />

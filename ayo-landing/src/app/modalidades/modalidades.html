@@ -1,0 +1,104 @@
+<div class="mod-page" [class.closing]="isClosing">
+
+  <!-- Barra de progresso -->
+  <div class="mod-progress-bar">
+    <div class="mod-progress-fill"
+         [style.width]="((activeIndex() + 1) / modalidades.length * 100) + '%'"></div>
+  </div>
+
+  <!-- Top bar -->
+  <div class="mod-topbar">
+    <div class="mod-brand">
+      <span class="mod-brand-ayo">AYO</span>
+      <span class="mod-brand-sep">·</span>
+      <span class="mod-brand-label">Modalidades</span>
+    </div>
+    <div class="mod-counter">{{ activeIndex() + 1 }} / {{ modalidades.length }}</div>
+    <button class="mod-close-btn" (click)="close()" aria-label="Voltar">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Dots laterais (desktop) -->
+  <nav class="mod-dots-aside" aria-label="Navegar modalidades">
+    @for (m of modalidades; track m.nome; let i = $index) {
+      <button
+        class="mod-dot"
+        [class.active]="activeIndex() === i"
+        (click)="goTo(i)"
+        [title]="m.nome"
+        [attr.aria-label]="m.nome">
+      </button>
+    }
+  </nav>
+
+  <!-- Container de scroll com snap -->
+  <div class="mod-scroll" #scrollEl>
+    @for (mod of modalidades; track mod.nome; let i = $index) {
+      <section class="mod-section" #sections [attr.data-index]="i">
+
+        <!-- Imagem -->
+        <div class="mod-img-panel">
+          <img
+            [src]="mod.imgDetalhe"
+            [alt]="mod.nome"
+            [attr.loading]="i === 0 ? 'eager' : 'lazy'">
+          <div class="mod-img-overlay"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="mod-content-panel">
+          <span class="mod-eyebrow">0{{ i + 1 }} — Modalidade</span>
+          <h2 class="mod-nome">{{ mod.nome }}</h2>
+          <div class="mod-divider"></div>
+          <p class="mod-desc">{{ mod.desc }}</p>
+
+          <p class="mod-list-title">{{ mod.listaTitulo }}:</p>
+          <ul class="mod-list">
+            @for (item of mod.lista; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+
+          @if (mod.nota) {
+            <p class="mod-note">{{ mod.nota }}</p>
+          }
+
+          <div class="mod-actions">
+            <a [href]="getWaLink(mod.nome)" target="_blank" rel="noopener" class="btn-mod-wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 0C5.376 0 0 5.374 0 11.988c0 2.115.557 4.099 1.528 5.82L0 24l6.335-1.658A11.946 11.946 0 0011.99 24C18.603 24 24 18.626 24 12.012 24 5.374 18.603 0 11.99 0zm0 21.818a9.826 9.826 0 01-5.012-1.371l-.359-.214-3.76.984 1.003-3.648-.235-.374A9.816 9.816 0 012.18 11.98c0-5.418 4.41-9.827 9.81-9.827 5.4 0 9.81 4.409 9.81 9.827s-4.41 9.838-9.81 9.838z"/>
+              </svg>
+              Quero agendar minha aula
+            </a>
+
+            <div class="mod-navbtns">
+              <button
+                class="mod-navbtn"
+                (click)="goTo(i - 1)"
+                [disabled]="i === 0"
+                aria-label="Modalidade anterior">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                  <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+              </button>
+              <button
+                class="mod-navbtn"
+                (click)="goTo(i + 1)"
+                [disabled]="i === modalidades.length - 1"
+                aria-label="Próxima modalidade">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    }
+  </div>
+
+</div>

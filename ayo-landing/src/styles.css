@@ -1,0 +1,32 @@
+/* Global styles */
+@import 'swiper/swiper-bundle.css';
+
+:root {
+  --teal: #00A8A8;
+  --teal-dk: #007F7F;
+  --teal-light: #DDECE7;
+  --dark-section: #0E5A5A;
+  --mid-teal: #7BCFCF;
+  --teal-deep: #006060;
+  --teal-night: #0A4848;
+  --cream: #FDF6F0;
+  --beige: #FDF6F0;
+  --page-dark: #0A5252;
+  --container: 1140px;
+
+  /* aliases para retrocompatibilidade */
+  --orange: var(--teal);
+  --orange-dk: var(--teal-dk);
+  --brown-dark: var(--dark-section);
+  --brown-mid: var(--mid-teal);
+  --brown-deep: var(--teal-deep);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: #1A1A1A;
+  overflow-x: hidden;
+}
