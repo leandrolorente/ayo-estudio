@@ -84,7 +84,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     },
   ];
 
-  planos = [
+  planos: { nome: string; img: string; valor: string; parcelas: string | null; acesso: string; destaque?: boolean }[] = [
     {
       nome: 'AVULSO',
       img: 'https://nyma.com.br/wp-content/uploads/2025/09/4.webp',
@@ -101,7 +101,8 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       nome: '8 VOUCHER',
       img: 'https://nyma.com.br/wp-content/uploads/2025/09/2-1.webp',
       valor: 'R\$80,00', parcelas: 'R\$480,00 em até 6x',
-      acesso: 'Acesso a todas as modalidades (validade 90 dias)'
+      acesso: 'Acesso a todas as modalidades (validade 90 dias)',
+      destaque: true
     },
     {
       nome: '12 VOUCHER',
@@ -180,6 +181,15 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
 
   private _handleScroll(): void {
     const current = window.scrollY;
+
+    /* Reading progress bar */
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    if (docHeight > 0) {
+      document.documentElement.style.setProperty(
+        '--reading-progress',
+        Math.min(100, (current / docHeight) * 100).toFixed(1) + '%'
+      );
+    }
 
     /* scrolled (muda background do header) */
     const wasScrolled = this.scrolled;

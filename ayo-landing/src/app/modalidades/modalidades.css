@@ -47,7 +47,7 @@
 
 .mod-progress-fill {
   height: 100%;
-  background: #00A8A8;
+  background: linear-gradient(to right, #00A8A8, var(--gold, #C9A96E));
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -242,10 +242,11 @@
 }
 
 .mod-nome {
-  font-size: clamp(26px, 3.5vw, 52px);
-  font-weight: 900;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 3.8vw, 56px);
+  font-weight: 700;
   color: #fff;
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: -0.5px;
   margin: 0;
 }
@@ -259,9 +260,9 @@
 }
 
 .mod-desc {
-  font-size: clamp(13px, 1.4vw, 15px);
-  line-height: 1.85;
-  color: rgba(255,255,255,0.55);
+  font-size: clamp(13px, 1.4vw, 16px);
+  line-height: 1.9;
+  color: rgba(255,255,255,0.65);
 }
 
 .mod-list-title {
@@ -284,10 +285,12 @@
 .mod-list li {
   position: relative;
   font-size: 13px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.6);
-  padding-left: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.70);
+  padding-left: 18px;
+  transition: color 0.2s;
 }
+.mod-list li:hover { color: rgba(255,255,255,0.90); }
 
 .mod-list li::before {
   content: '';
@@ -343,23 +346,24 @@
 }
 
 .mod-navbtn {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.22);
   background: transparent;
-  color: rgba(255,255,255,0.70);
+  color: rgba(255,255,255,0.75);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  transition: border-color 0.22s, background 0.22s, color 0.22s, transform 0.18s;
 }
 
 .mod-navbtn:hover:not(:disabled) {
   border-color: #00A8A8;
-  background: rgba(0,168,168,0.12);
+  background: rgba(0,168,168,0.18);
   color: #00A8A8;
+  transform: scale(1.08);
 }
 
 .mod-navbtn:disabled {

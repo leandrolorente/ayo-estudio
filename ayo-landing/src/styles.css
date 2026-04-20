@@ -14,12 +14,44 @@
   --page-dark: #0A5252;
   --container: 1140px;
 
+  /* novos tokens de design */
+  --gold: #C9A96E;
+  --gold-light: #e8c48a;
+  --cream-dark: #F0E6DC;
+  --text-muted: #6B7280;
+  --surface-glass: rgba(255,255,255,0.06);
+  --shadow-teal: rgba(0,168,168,0.18);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* escala tipográfica fluida */
+  --text-xs:   clamp(10px, 1vw,   11px);
+  --text-sm:   clamp(12px, 1.2vw, 13px);
+  --text-base: clamp(14px, 1.4vw, 16px);
+  --text-lg:   clamp(16px, 1.6vw, 19px);
+  --text-xl:   clamp(20px, 2vw,   24px);
+  --text-2xl:  clamp(24px, 2.4vw, 30px);
+  --text-3xl:  clamp(28px, 3vw,   38px);
+  --text-4xl:  clamp(32px, 3.5vw, 48px);
+  --text-5xl:  clamp(38px, 4.5vw, 60px);
+
+  /* espaçamentos */
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  40px;
+  --space-xl:  64px;
+  --space-2xl: 96px;
+
   /* aliases para retrocompatibilidade */
   --orange: var(--teal);
   --orange-dk: var(--teal-dk);
   --brown-dark: var(--dark-section);
   --brown-mid: var(--mid-teal);
   --brown-deep: var(--teal-deep);
+
+  /* reading progress (atualizado via JS) */
+  --reading-progress: 0%;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
