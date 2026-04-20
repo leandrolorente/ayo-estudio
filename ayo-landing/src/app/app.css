@@ -972,7 +972,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--teal) #FDF6F0; }
 /* ============================================================
    SWIPER OVERRIDES
    ============================================================ */
-.hero-pagination { bottom: 20px !important; }
+.hero-pagination { bottom: 0px !important; }
 .hero-pagination .swiper-pagination-bullet {
   background: rgba(255,255,255,0.35);
   opacity: 1;
