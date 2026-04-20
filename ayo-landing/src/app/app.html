@@ -34,9 +34,9 @@
   <div class="swiper hero-swiper" #heroSwiperEl>
     <div class="swiper-wrapper">
       @for (promo of promos; track promo.titulo) {
-        <div class="swiper-slide promo-slide">
+        <div class="swiper-slide promo-slide" [attr.data-swiper-autoplay]="promo.delay">
           <div class="promo-img-wrap">
-            <div class="promo-bg" [style.background-image]="'url(' + promo.img + ')'"></div>
+            <div class="promo-bg" [style.background-image]="'url(' + promo.img + ')'" [style.background-size]="promo.bgSize" [style.background-position]="promo.bgPos"></div>
             <div class="promo-overlay"></div>
             <h2 class="promo-titulo" [innerHTML]="promo.titulo"></h2>
           </div>

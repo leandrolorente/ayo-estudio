@@ -37,31 +37,40 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     {
       titulo: 'AYO MOVIMENTO<br><strong>Movimento que transforma</strong>',
       desc: 'Cuidar do corpo e da mente em um espaco acolhedor, com acompanhamento profissional e evolucao no seu ritmo.',
-      img: 'https://nyma.com.br/wp-content/uploads/2025/08/banner-3-scaled.webp'
+      img: 'fotos/foto%20inicial.jpeg',
+      bgSize: 'contain',
+      bgPos: 'center center',
+      delay: 9000
     },
     {
       titulo: 'Turmas reduzidas<br><strong>atencao de verdade</strong>',
       desc: 'Cada pratica foi pensada para desenvolver forca, mobilidade, consciencia corporal e bem-estar.',
-      img: 'https://nyma.com.br/wp-content/uploads/2025/08/chegamos-em-campinas-1-scaled.webp'
+      img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1400&q=80',
+      bgSize: 'cover',
+      bgPos: 'center center',
+      delay: 5200
     },
     {
       titulo: 'Agende sua aula experimental<br><strong>e viva essa experiencia</strong>',
       desc: 'Venha conhecer o AYO Movimento e descubra como o movimento pode transformar sua rotina.',
-      img: 'https://nyma.com.br/wp-content/uploads/2025/08/compre-1-leve-3-scaled.webp'
+      img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1400&q=80',
+      bgSize: 'cover',
+      bgPos: 'center top',
+      delay: 5200
     }
   ];
 
   modalidades = [
     {
       nome: 'Mat Pilates',
-      img: 'https://nyma.com.br/wp-content/uploads/2025/08/card-7.webp',
-      imgDetalhe: 'https://nyma.com.br/wp-content/uploads/2025/09/mat-pilates-1-1024x1024.webp',
+      img: 'fotos/mat%20pilates.jpg',
+      imgDetalhe: 'fotos/mat%20pilates.jpg',
       desc: 'Pilates no solo com exercicios que usam o peso do corpo e acessorios. Uma pratica completa para estabilidade, forca e consciencia corporal.'
     },
     {
       nome: 'Barre',
-      img: 'https://nyma.com.br/wp-content/uploads/2025/08/card-5.webp',
-      imgDetalhe: 'https://nyma.com.br/wp-content/uploads/2025/09/barre-1-1024x1024.webp',
+      img: 'fotos/barre.jpg',
+      imgDetalhe: 'fotos/barre.jpg',
       desc: 'Treino dinamico que mistura pilates, ballet e funcional. Um metodo intenso e elegante para fortalecer pernas, gluteos e core.'
     },
     {
@@ -72,8 +81,8 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       nome: 'Clube do Reformer Fit',
-      img: 'https://nyma.com.br/wp-content/uploads/2025/08/card-4.webp',
-      imgDetalhe: 'https://nyma.com.br/wp-content/uploads/2025/09/reformer-1024x1024.webp',
+      img: 'fotos/reforme.jpg',
+      imgDetalhe: 'fotos/reforme.jpg',
       desc: 'Treinos em grupo no reformer com foco em condicionamento fisico, forca e performance. Turmas de ate 6 alunos por aula.'
     },
     {

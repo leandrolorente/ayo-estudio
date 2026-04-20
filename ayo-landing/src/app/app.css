@@ -250,8 +250,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--teal) #FDF6F0; }
 .promo-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
   transition: transform 0.7s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
