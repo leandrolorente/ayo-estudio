@@ -12,8 +12,8 @@ RUN npm run build -- --configuration production
 FROM nginx:stable-alpine
 
 COPY --from=build /app/dist/ayo-landing/browser /usr/share/nginx/html
-COPY ayo-landing/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ayo-landing/nginx.conf /etc/nginx/conf.d/default.conf.template
 
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
