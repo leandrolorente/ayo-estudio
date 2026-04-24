@@ -4,7 +4,13 @@
 <!-- ===================== HEADER ===================== -->
 <header id="header" [class.hidden]="headerHidden" [class.scrolled]="scrolled">
   <div class="header-inner">
-    <div class="logo" (click)="scrollTo('inicio')">
+    <div
+      class="logo"
+      role="button"
+      tabindex="0"
+      (click)="scrollTo('inicio')"
+      (keydown.enter)="scrollTo('inicio')"
+      (keydown.space)="$event.preventDefault(); scrollTo('inicio')">
       <img src="logo-ayo-full.png" class="logo-img" alt="AYÃ“ Pilates">
     </div>
     <nav class="nav-desktop">
